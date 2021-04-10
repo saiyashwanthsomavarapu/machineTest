@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button  (click)="this.service.toggle()"  aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+          </button>
+        <span class="white-text">Users</span>
+        <span class="spacer"></span>
+        <ul class="hide-on-small-and-down">
+            <!-- <li>
+                <button mat-button>
+                    <span class="white-text hide-on-small-only">{{roles.userData.email}}</span>
+                </button>
+            </li> -->
+            <li>
+                <button mat-icon-button>
+                    <img class="circle" width="40" height="40"
+                        src='https://avatars1.githubusercontent.com/u/22214353?s=400&v=4' />
+                </button>
+            </li>
+            <li>
+                <span class="white-text hide-on-small-only">user</span>
+            </li>
+        </ul>
+    </mat-toolbar-row>
+</mat-toolbar>

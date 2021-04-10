@@ -1,0 +1,66 @@
+<form  [formGroup]="userDetailsForm" #formDirective="ngForm" style="padding: 20px;" (ngSubmit)="submit(formDirective)">
+    <div class="container">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name" placeholder="Name" required>
+                <mat-error *ngFor="let validation of service.validation_messages">
+                    <mat-error class="error-message" *ngIf="userDetailsForm.get('name').hasError(validation.type)">
+                        {{validation.message}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%">
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" formControlName="email" placeholder="Email Id" required>
+                <mat-error *ngFor="let validation of service.validation_messages">
+                    <mat-error class="error-message" *ngIf="userDetailsForm.get('email').hasError(validation.type)">
+                        {{validation.message}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%">
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Address</mat-label>
+                <input matInput type="text" formControlName="address" placeholder="Address" required>
+                <mat-error *ngFor="let validation of service.validation_messages">
+                    <mat-error class="error-message" *ngIf="userDetailsForm.get('address').hasError(validation.type)">
+                        {{validation.message}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender" >
+                    <mat-option *ngFor="let i of genders" [value]="i.value">{{i.value}}</mat-option>
+                </mat-select>
+                <mat-error *ngFor="let validation of service.validation_messages">
+                    <mat-error class="error-message" *ngIf="userDetailsForm.get('gender').hasError(validation.type)">
+                        {{validation.message}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%">
+            <mat-form-field appearance="outline" class="full-width">
+                <input matInput [matDatepicker]="dob" formControlName="dob" required>
+                <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                <mat-datepicker #dob></mat-datepicker>
+                <mat-label>Date of Birth</mat-label>
+                <mat-error *ngFor="let validation of service.validation_messages">
+                    <mat-error class="error-message" *ngIf="userDetailsForm.get('dob').hasError(validation.type)">
+                        {{validation.message}}
+                    </mat-error>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <button mat-button [mat-dialog-close]="userDetailsForm.value" [disabled]="!userDetailsForm.valid">submit</button>
+    </div>
+</form>
