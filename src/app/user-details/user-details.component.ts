@@ -18,7 +18,7 @@ export interface userData{
 export class UserDetailsComponent implements OnInit {
 
   userDetailsForm:FormGroup;
-
+  // GENDERS
   genders=[
     {"value":'male'},
     {"value":'female'}
